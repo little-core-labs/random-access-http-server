@@ -78,7 +78,7 @@ function middleware(opts) {
     function send(buffer) {
       res.end(buffer)
       // istanbul ignore next
-      if (false !== opts.autoClose) {
+      if (false !== opts.autoCloseStorage) {
         storage.close()
       }
     }
@@ -93,7 +93,7 @@ function middleware(opts) {
       // istanbul ignore next
       next(err)
       // istanbul ignore next
-      if (false !== opts.autoClose) {
+      if (false !== opts.autoCloseStorage) {
         storage.close((err) => {
           if (err) { debug(err) }
         })
