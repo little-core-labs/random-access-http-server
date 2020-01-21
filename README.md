@@ -21,7 +21,7 @@ $ npm install random-access-http-server
 const { createServer } = require('random-access-http-server')
 const raf = require('random-access-file')
 const server = createServer({
-  storage(pathname) {
+  storage(pathname, opts, req, res) {
     // return `random-access-storage` compliant object based
     // on `pathname` from the request URL
     return raf(pathname)
@@ -33,7 +33,7 @@ const server = createServer({
 const http = request('http')
 const raf = require('random-access-file')
 const onrequest = require('random-access-http-server/middleware')({
-  storage(pathname) {
+  storage(pathname, opts, req, res) {
     // same as above
     return raf(pathname)
   }
