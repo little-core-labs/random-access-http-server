@@ -1,6 +1,6 @@
 {
   "name": "random-access-http-server",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Server and middleware to serve read only random access storages over HTTP.",
   "main": "index.js",
   "scripts": {
