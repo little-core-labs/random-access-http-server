@@ -70,7 +70,7 @@ function middleware(opts) {
     }
 
     const uri = url.parse(req.url)
-    const storage = opts.storage(uri.pathname)
+    const storage = opts.storage(uri.pathname, opts, req, res)
     const contentType = mime.getType(uri.pathname)
 
     return void storage.open(onopen)
