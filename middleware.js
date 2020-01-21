@@ -77,7 +77,10 @@ function middleware(opts) {
 
     function send(buffer) {
       res.end(buffer)
-      storage.close()
+      // istanbul ignore next
+      if (false !== opts.autoClose) {
+        storage.close()
+      }
     }
 
     function onopen(err) {
@@ -90,9 +93,11 @@ function middleware(opts) {
       // istanbul ignore next
       next(err)
       // istanbul ignore next
-      storage.close((err) => {
-        if (err) { debug(err) }
-      })
+      if (false !== opts.autoClose) {
+        storage.close((err) => {
+          if (err) { debug(err) }
+        })
+      }
     }
 
     function onread(err, buffer) {
